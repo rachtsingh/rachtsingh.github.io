@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rachit Singh</title>
-    <link>rachitsingh.com/</link>
+    <link>https://rachitsingh.com/</link>
     <description>Recent content on Rachit Singh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 09 Dec 2017 00:47:37 -0800</lastBuildDate>
     
-	<atom:link href="rachitsingh.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://rachitsingh.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>NIPS 2017</title>
-      <link>rachitsingh.com/posts/nips/</link>
+      <link>https://rachitsingh.com/nips/</link>
       <pubDate>Sat, 09 Dec 2017 00:47:37 -0800</pubDate>
       
-      <guid>rachitsingh.com/posts/nips/</guid>
+      <guid>https://rachitsingh.com/nips/</guid>
       <description>I&#39;m starting this blog to share research ideas that I have, and some solutions to problems I find along the way. I&#39;ve been helped immensely by other people&#39;s blogs in the past, and want to do the same. Also it&#39;ll give me a chance to communicate the way I approach problems, and hopefully people will give me alternative perspectives either by email (rachitsingh@college.harvard.edu) or in the comments, once I figure out how that works.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>rachitsingh.com/about/</link>
+      <link>https://rachitsingh.com/about/</link>
       <pubDate>Thu, 07 Dec 2017 18:14:16 -0800</pubDate>
       
-      <guid>rachitsingh.com/about/</guid>
+      <guid>https://rachitsingh.com/about/</guid>
       <description>I&amp;rsquo;m Rachit Singh, and I&amp;rsquo;m a senior at Harvard, doing research in variational inference, Indian Buffet processes, and language models. I work with Alexander Rush, Finale Doshi-Velez, and I&amp;rsquo;m part of the Harvard NLP research group. I frequently work with Jeffrey Ling.
 I&amp;rsquo;m very interested in probabilistic programs, especially those like Edward, and I&amp;rsquo;m hoping to help build Pyro to be just as powerful, once I understand how it works. I like to write very fast code (I have a bit of CUDA + RTOS microcontroller work under my belt) in a variety of languages.</description>
     </item>

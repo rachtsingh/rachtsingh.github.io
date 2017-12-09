@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Rachit Singh</title>
-    <link>rachitsingh.com/tags/</link>
+    <link>https://rachitsingh.com/tags/</link>
     <description>Recent content in Tags on Rachit Singh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="rachitsingh.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://rachitsingh.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Thoughts</title>
-      <link>rachitsingh.com/tags/thoughts/</link>
+      <link>https://rachitsingh.com/tags/thoughts/</link>
       <pubDate>Sat, 09 Dec 2017 00:47:37 -0800</pubDate>
       
-      <guid>rachitsingh.com/tags/thoughts/</guid>
+      <guid>https://rachitsingh.com/tags/thoughts/</guid>
       <description></description>
     </item>
     
