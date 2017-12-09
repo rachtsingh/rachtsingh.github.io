@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>rachitsingh.com/posts/nips/</loc>
+    <lastmod>2017-12-09T00:47:37-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rachitsingh.com/about/</loc>
+    <lastmod>2017-12-07T18:14:16-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rachitsingh.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rachitsingh.com/posts/</loc>
+    <lastmod>2017-12-09T00:47:37-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rachitsingh.com/</loc>
+    <lastmod>2017-12-09T00:47:37-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rachitsingh.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rachitsingh.com/tags/thoughts/</loc>
+    <lastmod>2017-12-09T00:47:37-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

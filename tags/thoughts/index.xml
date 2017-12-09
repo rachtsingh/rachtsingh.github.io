@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thoughts on Rachit Singh</title>
+    <link>rachitsingh.com/tags/thoughts/</link>
+    <description>Recent content in Thoughts on Rachit Singh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 Dec 2017 00:47:37 -0800</lastBuildDate>
+    
+	<atom:link href="rachitsingh.com/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>NIPS 2017</title>
+      <link>rachitsingh.com/posts/nips/</link>
+      <pubDate>Sat, 09 Dec 2017 00:47:37 -0800</pubDate>
+      
+      <guid>rachitsingh.com/posts/nips/</guid>
+      <description>I&#39;m starting this blog to share research ideas that I have, and some solutions to problems I find along the way. I&#39;ve been helped immensely by other people&#39;s blogs in the past, and want to do the same. Also it&#39;ll give me a chance to communicate the way I approach problems, and hopefully people will give me alternative perspectives either by email (rachitsingh@college.harvard.edu) or in the comments, once I figure out how that works.</description>
+    </item>
+    
+  </channel>
+</rss>
