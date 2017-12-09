@@ -1,0 +1,11 @@
+---
+title: "NIPS 2017"
+date: 2017-12-09T00:47:37-08:00
+draft: false
+tags: [thoughts]
+slug: nips
+---
+
+I'm starting this blog to share research ideas that I have, and some solutions to problems I find along the way. I've been helped immensely by other people's blogs in the past, and want to do the same. Also it'll give me a chance to communicate the way I approach problems, and hopefully people will give me alternative perspectives either by email ([rachitsingh@college.harvard.edu](mailto:rachitsingh@college.harvard.edu)) or in the comments, once I figure out how that works. 
+
+I'm going to steadily post my thoughts on NIPS 2017 (summary: lots of exposure to new ideas, very glad I went); but as a start I'm going to explain how we went: Jeffrey Ling and I submitted a [short paper](http://approximateinference.org/2017/accepted/SinghEtAl2017.pdf) on Indian Buffet Processes to the [NIPS workshop on Advances in Approximate Bayesian Inference (AABI)](approximateinference.org), and we were accepted. See the [repo](https://github.com/rachtsingh/ibp_vae) for runnable code and some more information. I'll blog about the IBP as well soon, possibly after we have our ArXiv preprint up (soon!).

@@ -1,0 +1,12 @@
+baseURL = "rachitsingh.com"
+languageCode = "en-us"
+title = "Rachit Singh"
+theme = "onetwothree"
+pygmentsCodeFences=true 
+
+[permalinks]
+    post = "/:slug/"
+
+[params]
+    email = "rachitsingh@college.harvard.edu"
+    navigation = ["about.md"]
