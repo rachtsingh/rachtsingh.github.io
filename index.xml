@@ -6,10 +6,20 @@
     <description>Recent content on Rachit Singh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Dec 2017 00:47:37 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 Dec 2017 16:55:26 -0500</lastBuildDate>
     
 	<atom:link href="https://rachitsingh.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Links</title>
+      <link>https://rachitsingh.com/links/</link>
+      <pubDate>Thu, 14 Dec 2017 16:55:26 -0500</pubDate>
+      
+      <guid>https://rachitsingh.com/links/</guid>
+      <description>Here are some useful links I&#39;ve found:
+LaTeX  A tikz-cd graphical editor that I wish I&#39;d during 55... - http://tikzcd.yichuanshen.de/ For high power Bayesian diagrams, I like tikz-bayesnet, but honestly it&#39;s often not worth the trouble vs. using tikz-cd and adding a circle macro. ShareLaTeX is quite useful for collaborating, and open source. One day when I have time I&#39;ll make a PR...  Vim  My dotfiles are here: http://github.</description>
+    </item>
     
     <item>
       <title>NIPS 2017</title>
