@@ -17,7 +17,7 @@
       <pubDate>Sat, 23 Dec 2017 12:08:00 -0800</pubDate>
       
       <guid>https://rachitsingh.com/elbo_surgery/</guid>
-      <description>At NIPS, Dawen Liang mentioned ELBO surgery offhand while talking about tuning KL divergences, and it&#39;s very interesting, so I thought I&#39;d go over it. It&#39;s very clearly written, so I won&#39;t go into any of the derivations, but instead offer my interpretation.
+      <description>At NIPS, Dawen Liang mentioned Hoffman &amp;amp; Johnson&#39;s ELBO surgery paper offhand while talking about tuning KL divergences, and it&#39;s very interesting, so I thought I&#39;d go over it. It&#39;s very clearly written, so I won&#39;t go into any of the derivations, but instead offer my interpretation.
 Motivation I worked in the past on applying variational inference in a setting where it was compared against models that performed MLE/MAP inference. I explained the evidence lower bound (ELBO) as:</description>
     </item>
     
@@ -27,8 +27,8 @@ Motivation I worked in the past on applying variational inference in a setting w
       <pubDate>Thu, 14 Dec 2017 16:55:26 -0500</pubDate>
       
       <guid>https://rachitsingh.com/links/</guid>
-      <description>Here are some useful links I&#39;ve found:
-LaTeX  A tikz-cd graphical editor that I wish I&#39;d during 55... - http://tikzcd.yichuanshen.de/ For high power Bayesian diagrams, I like tikz-bayesnet, but honestly it&#39;s often not worth the trouble vs. using tikz-cd and adding a circle macro. ShareLaTeX is quite useful for collaborating, and open source. One day when I have time I&#39;ll make a PR...  Vim  My dotfiles are here: http://github.</description>
+      <description>Here are some useful links I&amp;rsquo;ve found:
+LaTeX  A tikz-cd graphical editor that I wish I&amp;rsquo;d during 55&amp;hellip; - http://tikzcd.yichuanshen.de/ For high power Bayesian diagrams, I like tikz-bayesnet, but honestly it&amp;rsquo;s often not worth the trouble vs. using tikz-cd and adding a circle macro. ShareLaTeX is quite useful for collaborating, and open source. One day when I have time I&amp;rsquo;ll make a PR&amp;hellip;  Vim  My dotfiles are here: http://github.</description>
     </item>
     
     <item>
