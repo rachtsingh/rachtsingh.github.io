@@ -6,10 +6,20 @@
     <description>Recent content on Rachit Singh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Dec 2017 16:55:26 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 23 Dec 2017 12:08:00 -0800</lastBuildDate>
     
 	<atom:link href="https://rachitsingh.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ELBO Surgery</title>
+      <link>https://rachitsingh.com/elbo_surgery/</link>
+      <pubDate>Sat, 23 Dec 2017 12:08:00 -0800</pubDate>
+      
+      <guid>https://rachitsingh.com/elbo_surgery/</guid>
+      <description>At NIPS, Dawen Liang mentioned ELBO surgery offhand while talking about tuning KL divergences, and it&#39;s very interesting, so I thought I&#39;d go over it. It&#39;s very clearly written, so I won&#39;t go into any of the derivations, but instead offer my interpretation.
+Motivation I worked in the past on applying variational inference in a setting where it was compared against models that performed MLE/MAP inference. I explained the evidence lower bound (ELBO) as:</description>
+    </item>
     
     <item>
       <title>Links</title>

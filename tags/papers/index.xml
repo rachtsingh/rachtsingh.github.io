@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Rachit Singh</title>
-    <link>https://rachitsingh.com/posts/</link>
-    <description>Recent content in Posts on Rachit Singh</description>
+    <title>Papers on Rachit Singh</title>
+    <link>https://rachitsingh.com/tags/papers/</link>
+    <description>Recent content in Papers on Rachit Singh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 23 Dec 2017 12:08:00 -0800</lastBuildDate>
     
-	<atom:link href="https://rachitsingh.com/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://rachitsingh.com/tags/papers/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       <guid>https://rachitsingh.com/elbo_surgery/</guid>
       <description>At NIPS, Dawen Liang mentioned ELBO surgery offhand while talking about tuning KL divergences, and it&#39;s very interesting, so I thought I&#39;d go over it. It&#39;s very clearly written, so I won&#39;t go into any of the derivations, but instead offer my interpretation.
 Motivation I worked in the past on applying variational inference in a setting where it was compared against models that performed MLE/MAP inference. I explained the evidence lower bound (ELBO) as:</description>
-    </item>
-    
-    <item>
-      <title>NIPS 2017</title>
-      <link>https://rachitsingh.com/nips/</link>
-      <pubDate>Sat, 09 Dec 2017 00:47:37 -0800</pubDate>
-      
-      <guid>https://rachitsingh.com/nips/</guid>
-      <description>I&#39;m starting this blog to share research ideas that I have, and some solutions to problems I find along the way. I&#39;ve been helped immensely by other people&#39;s blogs in the past, and want to do the same. Also it&#39;ll give me a chance to communicate the way I approach problems, and hopefully people will give me alternative perspectives either by email (rachitsingh@college.harvard.edu) or in the comments, once I figure out how that works.</description>
     </item>
     
   </channel>
