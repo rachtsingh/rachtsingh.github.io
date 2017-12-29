@@ -114,17 +114,24 @@ window.onload = ready;
 
 <p><span  class="math">\[\mathcal{L} = \underbrace{\frac{1}{N}\sum_{i = 1}^N E_{q(z_n | x_n)}[\log p(x_n | z_n)]}_{\text{log-likelihood}} - \underbrace{\vphantom{\sum_{i = 1}^N}E_{q(z)}[\operatorname{KL}(q(n | z) || p(n)))]}_{\text{index-code mutual information}} - \underbrace{\vphantom{\sum_{i = 1}^N}\operatorname{KL}(q(z) || p(z))}_{\text{marginal KL}}\]</span></p>
 
-<p>(this is not an obvious derivation, but the math checks out). Here, <span  class="math">\(q(n | z)\)</span> (which we can decompose using Bayes' law) can be interpreted as 'how well we know which datapoint this <span  class="math">\(z\)</span> belongs to'. The description index-code mutual information comes from an alternative formulation, but I like this one more. Also, they upper bound this value by <span  class="math">\(\log N\)</span>, a not insignificant quantity! This is 11 nats on MNIST.</p>
+<p>(this is not an obvious derivation, but the math checks out). Here, <span  class="math">\(q(n | z)\)</span> (which we can decompose using Bayes' law) can be interpreted as 'the distribution over which datapoint this <span  class="math">\(z\)</span> belongs to'. The description 'index-code mutual information' comes from an alternative way to write the expression, but I like this one more. Also, they upper bound this value by <span  class="math">\(\log N\)</span>, a not insignificant quantity! This is 11 nats on MNIST.</p>
 
 <h3 id="experiments">Experiments</h3>
 
-<p>Finally, the most interesting section, which is the quantitative analysis: they apply the model to a set of the usual VAEs with a isotropic Gaussian prior used for binarized MNIST, and get the following results:</p>
+<p>Finally, the most interesting section, which is the quantitative analysis: they apply the model to a set of the usual VAEs with an isotropic Gaussian prior used for binarized MNIST, and get the following results:</p>
 
 <style>
 td { 
     padding: 5px;
     font-family: monospace;
     font-size: 1.25rem;
+}
+th {
+    text-align: center;
+    padding: 0px 5px;
+}
+th.left_column {
+    text-align: right;
 }
 </style>
 
@@ -137,21 +144,21 @@ td {
     <th>Marginal KL</th>
   </tr>
   <tr>
-    <th>2D latents</th>
+    <th class="left_column">2D latents</th>
     <td>-129.63</td>
     <td>7.41</td>
     <td>7.20</td>
     <td>0.21</td>
   </tr>
     <tr>
-    <th>10D latents</th>
+    <th class="left_column">10D latents</th>
     <td>-88.95</td>
     <td>19.17</td>
     <td>10.82</td>
     <td>8.35</td>
   </tr>
     <tr>
-    <th>20D latents</th>
+    <th class="left_column">20D latents</th>
     <td>-87.45</td>
     <td>20.2</td>
     <td>10.67</td>
@@ -159,7 +166,7 @@ td {
   </tr>
 </table>
 
-<p>So, what's going on is that as we increase the number of latent dimensions to 10/20, the marginal KL gets large! Which means that <em>the Gaussian prior is not good enough anymore</em>. This is interesting food for thought, since that gives a lot of evidence for a hunch that people have had for a while (and motivates work on new prior distributions, like <a href="http://rachitsingh.com/ibp_dgm.pdf">our paper</a>).</p>
+<p>So, what's going on is that as we increase the number of latent dimensions to 10/20, the marginal KL gets large! Which means that <em>the Gaussian prior is not good enough anymore</em>. At least, that is my interpretation. This is interesting food for thought, since that gives a lot of evidence for a hunch that people have had for a while (and motivates work on new prior distributions, like <a href="http://rachitsingh.com/ibp_dgm.pdf">our paper</a>).</p>
 
 </div>
 
