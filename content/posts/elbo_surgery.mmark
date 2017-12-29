@@ -6,17 +6,39 @@ tags: [papers]
 slug: elbo_surgery
 ---
 
+<style>
+td { 
+  padding: 5px;
+  font-family: monospace;
+  font-size: 1.25rem;
+}
+th {
+  text-align: center;
+  padding: 0px 5px;
+}
+th.left_column {
+  text-align: right;
+}
+figure { 
+  margin: 0px 20px;
+}
+img[src*="#smaller"] {
+  width: 50%;
+  margin: auto;
+}
+</style>
+
 At NIPS, Dawen Liang mentioned Hoffman & Johnson's [ELBO surgery](http://approximateinference.org/accepted/HoffmanJohnson2016.pdf) paper offhand while talking about tuning KL divergences, and it's very interesting, so I thought I'd go over it. It's very clearly written, so I won't go into any of the derivations, but instead offer my interpretation.
 
 ### Motivation
 
-I worked in the past on applying variational inference in a setting where it was compared against models that performed MLE/MAP inference. I explained the evidence lower bound (ELBO) as:
+I worked in the past on applying variational inference and comparing it to models trained via MAP/MLE inference. I decomposed the evidence lower bound (ELBO) as:
 
-$$\mathcal{L} = \underbrace{\frac{1}{N}\sum_{i = 1}^N \mathbb{E}_{q(z_n | x_n)}[\log p(x_n | z_n)]}_{\text{log-likelihood}} - \underbrace{\vphantom{\sum_{i = 1}^N}\operatorname{KL}(q(z_n | x_n) || p(z_n))}_{\text{KL divergence}}$$
+$$\mathcal{L} = \frac{1}{N}\sum_{i = 1}^N\left(\underbrace{\mathbb{E}_{q(z_n | x_n)}[\log p(x_n | z_n)]}_{\text{log-likelihood}} - \underbrace{\operatorname{KL}(q(z_n | x_n) || p(z_n))}_{\text{KL divergence}}\right)$$
 
-This is, I think, the most common interpretation: split it into a reconstruction term and a KL divergence term. The first encourages the model to reconstruct the data, and the second *regularizes* the model, preventing it from just autoencoding, in a sense. For example, in a VAE the second term is what prevents the model from just learning a posterior $$q(z_n | x_n) = \mathcal{N}(z_n; x_n, 0.0001)$$ model, essentially, if the capacity is big enough, etc. 
+This is, I think, the most common interpretation: split the ELBO into a reconstruction term and a KL divergence term. The first encourages the model to reconstruct the data, and the second *regularizes* the model, asking the posterior distribution over $$z_n$$ to have a certain shape, like a Gaussian. For example, in a VAE the second term is what prevents the model from just learning a Dirac delta-like posterior $$q(z_n | x_n) \sim \mathcal{N}(x_n, 0.001)$$ around the original value[^1]. 
 
-In the NLP world, people have seen some problems though - when we have a very powerful generative model (e.g., an RNN), the KL divergence can vanish. This means the posterior *learns nothing* about the data, and we essentially have a language model for p(x | z). The usual trick is to anneal the KL divergence term in, so that that inference can be useful. A lot of people are unhappy with this because it adds extra hyperparameters and it feels really non-Bayesian. 
+In the NLP world, people have seen some problems though - when we have a very powerful generative model (e.g., an RNN), the KL divergence can vanish. This means the posterior $$q(z_n | x_n) \approx p(z_n)$$ *learns nothing* about the data, so the generative model $$p(x_n | z_n)$$ becomes like a language model. The usual trick is to anneal the KL divergence term in, so that that inference can be useful. A lot of people are unhappy with this because it adds extra hyperparameters and it feels really non-Bayesian. 
 
 ### Contribution
 
@@ -25,6 +47,8 @@ The contribution of this paper is the following observation: the KL divergence a
 $$q(z) = \frac{1}{N}\sum_{n = 1}^Nq(z_n | x_n)$$
 
 which is the *average* posterior we see. The intuition here is that when we're trying to do inference, we shouldn't exactly be penalized for being very confident in $$q(z_n | x_n)$$. However, we want the *average* distribution to be close to the prior, so this term can go to 0 safely without worrying about whether the posterior has learned something. In fact, at the cost of a lot of extra computation, we can even safely set the prior to be this distribution, or let $$p(z) \triangleq q(z)$$! 
+![](/figure_1.png "The average distribution. On the left, we see a confident posterior over the latent variable corresponding to a point, which is penalized. On the right we see the *average* posterior with two points. ")
+![](/figure_2.png#smaller "The average distribution over 10 data points. This corresponds much better to the prior, as we'd hope.")
 
 Then, they view $$n$$, the index variable, as a random variable, where the interpretation is that our generative model samples $$n \sim \operatorname{Unif}[N]$$, and then picks a $$z_n$$ from $$p(z)$$. This isn't totally intuitive, but it makes more sense on the inference side, which we'll see below. Finally, they decompose the second term further as follows:
 
@@ -35,21 +59,6 @@ $$\mathcal{L} = \underbrace{\frac{1}{N}\sum_{i = 1}^N E_{q(z_n | x_n)}[\log p(x_
 ### Experiments
 
 Finally, the most interesting section, which is the quantitative analysis: they apply the model to a set of the usual VAEs with an isotropic Gaussian prior used for binarized MNIST, and get the following results:
-
-<style>
-td { 
-	padding: 5px;
-	font-family: monospace;
-	font-size: 1.25rem;
-}
-th {
-	text-align: center;
-	padding: 0px 5px;
-}
-th.left_column {
-	text-align: right;
-}
-</style>
 
 <table style='max-width: 50rem'>
   <tr>
@@ -83,3 +92,5 @@ th.left_column {
 </table>
 
 So, what's going on is that as we increase the number of latent dimensions to 10/20, the marginal KL gets large! Which means that *the Gaussian prior is not good enough anymore*. At least, that is my interpretation. This is interesting food for thought, since that gives a lot of evidence for a hunch that people have had for a while (and motivates work on new prior distributions, like [our paper](http://rachitsingh.com/ibp_dgm.pdf)).
+
+[^1]: Well, if the latent capacity is large enough. Otherwise it might learn, e.g. a PCA-like compression, or some other compression if the inference and generation nets are more crazy.
