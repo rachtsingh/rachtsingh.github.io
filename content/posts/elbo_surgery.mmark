@@ -6,7 +6,7 @@ tags: [papers]
 slug: elbo_surgery
 ---
 
-At NIPS, Dawen Liang mentioned [ELBO surgery](http://approximateinference.org/accepted/HoffmanJohnson2016.pdf) offhand while talking about tuning KL divergences, and it's very interesting, so I thought I'd go over it. It's very clearly written, so I won't go into any of the derivations, but instead offer my interpretation.
+At NIPS, Dawen Liang mentioned Hoffman & Johnson's [ELBO surgery](http://approximateinference.org/accepted/HoffmanJohnson2016.pdf) paper offhand while talking about tuning KL divergences, and it's very interesting, so I thought I'd go over it. It's very clearly written, so I won't go into any of the derivations, but instead offer my interpretation.
 
 ### Motivation
 

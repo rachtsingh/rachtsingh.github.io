@@ -10,4 +10,4 @@ pygmentsStyle = "autumn"
 
 [params]
     email = "rachitsingh@college.harvard.edu"
-    navigation = ["about.md"]
+    navigation = ["about.md", "links.md"]
