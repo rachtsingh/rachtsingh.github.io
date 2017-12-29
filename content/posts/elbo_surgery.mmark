@@ -1,0 +1,78 @@
+---
+title: "ELBO Surgery"
+date: 2017-12-23T12:08:00-08:00
+draft: false
+tags: [papers]
+slug: elbo_surgery
+---
+
+At NIPS, Dawen Liang mentioned [ELBO surgery](http://approximateinference.org/accepted/HoffmanJohnson2016.pdf) offhand while talking about tuning KL divergences, and it's very interesting, so I thought I'd go over it. It's very clearly written, so I won't go into any of the derivations, but instead offer my interpretation.
+
+### Motivation
+
+I worked in the past on applying variational inference in a setting where it was compared against models that performed MLE/MAP inference. I explained the evidence lower bound (ELBO) as:
+
+$$\mathcal{L} = \underbrace{\frac{1}{N}\sum_{i = 1}^N \mathbb{E}_{q(z_n | x_n)}[\log p(x_n | z_n)]}_{\text{log-likelihood}} - \underbrace{\vphantom{\sum_{i = 1}^N}\operatorname{KL}(q(z_n | x_n) || p(z_n))}_{\text{KL divergence}}$$
+
+This is, I think, the most common interpretation: split it into a reconstruction term and a KL divergence term. The first encourages the model to reconstruct the data, and the second *regularizes* the model, preventing it from just autoencoding, in a sense. For example, in a VAE the second term is what prevents the model from just learning a posterior $$q(z_n | x_n) = \mathcal{N}(z_n; x_n, 0.0001)$$ model, essentially, if the capacity is big enough, etc. 
+
+In the NLP world, people have seen some problems though - when we have a very powerful generative model (e.g., an RNN), the KL divergence can vanish. This means the posterior *learns nothing* about the data, and we essentially have a language model for p(x | z). The usual trick is to anneal the KL divergence term in, so that that inference can be useful. A lot of people are unhappy with this because it adds extra hyperparameters and it feels really non-Bayesian. 
+
+### Contribution
+
+The contribution of this paper is the following observation: the KL divergence above measures the distance from the posterior for a single $$z_n$$ to the prior, but we really care about the KL divergence from the average posterior over all data points to the prior. So they define
+
+$$q(z) = \frac{1}{N}\sum_{n = 1}^Nq(z_n | x_n)$$
+
+which is the *average* posterior we see. The intuition here is that when we're trying to do inference, we shouldn't exactly be penalized for being very confident in $$q(z_n | x_n)$$. However, we want the *average* distribution to be close to the prior, so this term can go to 0 safely without worrying about whether the posterior has learned something. In fact, at the cost of a lot of extra computation, we can even safely set the prior to be this distribution, or let $$p(z) \triangleq q(z)$$! 
+
+Then, they view $$n$$, the index variable, as a random variable, where the interpretation is that our generative model samples $$n \sim \operatorname{Unif}[N]$$, and then picks a $$z_n$$ from $$p(z)$$. This isn't totally intuitive, but it makes more sense on the inference side, which we'll see below. Finally, they decompose the second term further as follows:
+
+$$\mathcal{L} = \underbrace{\frac{1}{N}\sum_{i = 1}^N E_{q(z_n | x_n)}[\log p(x_n | z_n)]}_{\text{log-likelihood}} - \underbrace{\vphantom{\sum_{i = 1}^N}E_{q(z)}[\operatorname{KL}(q(n | z) || p(n)))]}_{\text{index-code mutual information}} - \underbrace{\vphantom{\sum_{i = 1}^N}\operatorname{KL}(q(z) || p(z))}_{\text{marginal KL}}$$
+
+(this is not an obvious derivation, but the math checks out). Here, $$q(n | z)$$ (which we can decompose using Bayes' law) can be interpreted as 'how well we know which datapoint this $$z$$ belongs to'. The description index-code mutual information comes from an alternative formulation, but I like this one more. Also, they upper bound this value by $$\log N$$, a not insignificant quantity! This is 11 nats on MNIST. 
+
+### Experiments
+
+Finally, the most interesting section, which is the quantitative analysis: they apply the model to a set of the usual VAEs with a isotropic Gaussian prior used for binarized MNIST, and get the following results:
+
+<style>
+td { 
+	padding: 5px;
+	font-family: monospace;
+	font-size: 1.25rem;
+}
+</style>
+
+<table style='max-width: 50rem'>
+  <tr>
+  	<th></th>
+    <th>ELBO</th>
+    <th>Average KL</th>
+    <th>Mutual info.</th>
+    <th>Marginal KL</th>
+  </tr>
+  <tr>
+    <th>2D latents</th>
+    <td>-129.63</td>
+    <td>7.41</td>
+    <td>7.20</td>
+    <td>0.21</td>
+  </tr>
+    <tr>
+    <th>10D latents</th>
+    <td>-88.95</td>
+    <td>19.17</td>
+    <td>10.82</td>
+    <td>8.35</td>
+  </tr>
+    <tr>
+    <th>20D latents</th>
+    <td>-87.45</td>
+    <td>20.2</td>
+    <td>10.67</td>
+    <td>9.53</td>
+  </tr>
+</table>
+
+So, what's going on is that as we increase the number of latent dimensions to 10/20, the marginal KL gets large! Which means that *the Gaussian prior is not good enough anymore*. This is interesting food for thought, since that gives a lot of evidence for a hunch that people have had for a while (and motivates work on new prior distributions, like [our paper](http://rachitsingh.com/ibp_dgm.pdf)).
