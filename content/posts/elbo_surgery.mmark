@@ -29,6 +29,8 @@ img[src*="#smaller"] {
 }
 </style>
 
+**tldr: The ubiquitous isotropic Gaussian prior for generative models doesn't make sense / doesn't work, which motivates work on priors.**
+
 At NIPS, Dawen Liang mentioned Hoffman & Johnson's [ELBO surgery](http://approximateinference.org/accepted/HoffmanJohnson2016.pdf) paper offhand while talking about tuning KL divergences, and it's very interesting, so I thought I'd go over it. It's very clearly written, so I won't go into any of the derivations, but instead offer my interpretation.
 
 ### Motivation
