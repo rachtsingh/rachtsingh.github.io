@@ -17,7 +17,8 @@
       <pubDate>Sat, 23 Dec 2017 12:08:00 -0800</pubDate>
       
       <guid>https://rachitsingh.com/elbo_surgery/</guid>
-      <description>td { padding: 5px; font-family: monospace; font-size: 1.25rem; } th { text-align: center; padding: 0px 5px; } th.left_column { text-align: right; } figure { margin: 0px 20px; max-width: 50rem; } img[src*=&#34;#smaller&#34;] { width: 50%; margin: auto; }  At NIPS, Dawen Liang mentioned Hoffman &amp;amp; Johnson&#39;s ELBO surgery paper offhand while talking about tuning KL divergences, and it&#39;s very interesting, so I thought I&#39;d go over it. It&#39;s very clearly written, so I won&#39;t go into any of the derivations, but instead offer my interpretation.</description>
+      <description>td { padding: 5px; font-family: monospace; font-size: 1.25rem; } th { text-align: center; padding: 0px 5px; } th.left_column { text-align: right; } figure { margin: 0px 20px; max-width: 50rem; } img[src*=&#34;#smaller&#34;] { width: 50%; margin: auto; }  tldr: The ubiquitous isotropic Gaussian prior for generative models doesn&#39;t make sense / doesn&#39;t work, which motivates work on priors.
+At NIPS, Dawen Liang mentioned Hoffman &amp;amp; Johnson&#39;s ELBO surgery paper offhand while talking about tuning KL divergences, and it&#39;s very interesting, so I thought I&#39;d go over it.</description>
     </item>
     
   </channel>
