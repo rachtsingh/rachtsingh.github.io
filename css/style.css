@@ -1,5 +1,5 @@
 body {
-    font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+    font-family: 'Lora', 'Georgia', serif;
     line-height: 1.15;
     padding: 4rem;
     box-sizing: border-box;
@@ -21,6 +21,11 @@ aside {
     font-size: .875rem;
     color: #777;
     margin-top: 0.5em;
+    font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+}
+
+header strong {
+    font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
 }
 
 code {
