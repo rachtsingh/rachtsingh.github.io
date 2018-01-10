@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Rachit Singh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jan 2018 18:44:27 -0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jan 2018 12:48:10 -0800</lastBuildDate>
     
 	<atom:link href="https://rachitsingh.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A few favorite papers of 2017</title>
+      <link>https://rachitsingh.com/a-few-favorite-papers-of-2017/</link>
+      <pubDate>Tue, 09 Jan 2018 12:48:10 -0800</pubDate>
+      
+      <guid>https://rachitsingh.com/a-few-favorite-papers-of-2017/</guid>
+      <description>This isn&#39;t an exhaustive list, and I will inevitably forget some papers. I&#39;ll keep updating as a remember, and will probably expand some of the background/contribution sections as I have time, so that they&#39;re more accessible.
+Breaking the Softmax Bottleneck: A High-Rank RNN Language Model [link] Background: Language models and NLP tasks almost always use a softmax to compute a distribution over the vocabulary, and usually this is computed as \(\sigma(\mathbf{W}\mathbf{h})\), where \(\mathbf{h}\) is a \(d\)-dimensional context vector from a previous layer, and \(\mathbf{W} \in \mathbb{R}^{M \times d}\) is a word embedding, letting $M$ be the vocabulary size.</description>
+    </item>
     
     <item>
       <title>PyTorch Internals, cuRAND, and numerical instability</title>
