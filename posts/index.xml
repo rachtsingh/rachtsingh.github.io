@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Rachit Singh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Jan 2018 12:48:10 -0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Apr 2018 10:52:54 -0400</lastBuildDate>
     
 	<atom:link href="https://rachitsingh.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Persistence Length</title>
+      <link>https://rachitsingh.com/persistence-length/</link>
+      <pubDate>Sun, 22 Apr 2018 10:52:54 -0400</pubDate>
+      
+      <guid>https://rachitsingh.com/persistence-length/</guid>
+      <description>td { padding: 5px; font-family: monospace; font-size: 1.25rem; } th { text-align: center; padding: 0px 5px; } th.left_column { text-align: right; } figure { margin: 0px 20px; max-width: 50rem; } img[src*=&#34;#smaller&#34;] { width: 50%; margin: auto; margin-bottom: 15px; }  In class we recently discussed the simplified elastic rod model for polymers, which assumes that polymers can be modeled as an inextensible rod, i.e. that the length of the rod doesn&#39;t change, and that the twist of the polymer is ignorable (possibly because the polymer is joined by single bonds).</description>
+    </item>
     
     <item>
       <title>A few favorite papers of 2017</title>

@@ -109,13 +109,14 @@ window.onload = ready;
 
 <p><strong>Contribution</strong>: This paper shows a method (via coupled chains) that shows how to eliminate bias in MCMC samples.</p>
 
-<p><strong>Why I like this</strong>: I think the above scenario of having a high burn-in overhead is not rare, and it's important to know that we can sample in an unbiased way for peace-of-mind purposes. Also, I think it's very foundational, but I might be missing some of the literature here.</p>
+<!-- **Why I like this**: I think the above scenario of having a high burn-in overhead is not rare, and it's important to know that we can sample in an unbiased way for peace-of-mind purposes. Also, I think it's very foundational, but I might be missing some of the literature here. 
 
-<h2 id="attention-is-all-you-need-linkhttpsarxivorgabs170603762">Attention Is All You Need [<a href="https://arxiv.org/abs/1706.03762">link</a>]</h2>
+## Attention Is All You Need \[[link](https://arxiv.org/abs/1706.03762)\]
 
-<p>This is a fairly well publicized piece of work, so I probably don't need to say too much about it. Here's <a href="https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/">a detailed overview</a> and <a href="https://research.googleblog.com/2017/08/transformer-novel-neural-network.html">Google's own blog post about it</a>. I don't think I understand it well enough that the idea is 'intuitive', so maybe it doesn't belong in this list, but it's certainly making waves.</p>
+This is a fairly well publicized piece of work, so I probably don't need to say too much about it. Here's [a detailed overview](https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/) and [Google's own blog post about it](https://research.googleblog.com/2017/08/transformer-novel-neural-network.html). I don't think I understand it well enough that the idea is 'intuitive', so maybe it doesn't belong in this list, but it's certainly making waves. 
 
-<p><strong>tldr</strong>: This paper achieves SOTA on NMT (!) with a very novel architecture, by essentially removing all recurrences (since they must process sequentially) and processing in parallel with <em>multi-headed attention</em>. It encodes a word's position via an encoding, rather than algorithmically, which has been tried before, but the attention makes it work. Best of all, it is much faster than training a seq2seq model on the same task.</p>
+**tldr**: This paper achieves SOTA on NMT (!) with a very novel architecture, by essentially removing all recurrences (since they must process sequentially) and processing in parallel with *multi-headed attention*. It encodes a word's position via an encoding, rather than algorithmically, which has been tried before, but the attention makes it work. Best of all, it is much faster than training a seq2seq model on the same task. 
+-->
 
 <p>It's very rare to see a work both push SOTA on a benchmark, <em>and</em> be faster at the same time.</p>
 
@@ -175,7 +176,7 @@ window.onload = ready;
 
 	<p>
 	<a href="/pytorch-internals-curand-and-numerical-instability/">← PyTorch Internals, cuRAND, and numerical instability</a>&nbsp;
-	
+	<a href="/persistence-length/" style="float:right;">Persistence Length →</a>
 	</p>
 
 

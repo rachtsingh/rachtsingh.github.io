@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://rachitsingh.com/persistence-length/</loc>
+    <lastmod>2018-04-22T10:52:54-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://rachitsingh.com/a-few-favorite-papers-of-2017/</loc>
     <lastmod>2018-01-09T12:48:10-08:00</lastmod>
   </url>
@@ -45,13 +50,13 @@
   
   <url>
     <loc>https://rachitsingh.com/posts/</loc>
-    <lastmod>2018-01-09T12:48:10-08:00</lastmod>
+    <lastmod>2018-04-22T10:52:54-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://rachitsingh.com/</loc>
-    <lastmod>2018-01-09T12:48:10-08:00</lastmod>
+    <lastmod>2018-04-22T10:52:54-04:00</lastmod>
     <priority>0</priority>
   </url>
   
