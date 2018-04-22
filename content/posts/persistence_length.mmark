@@ -1,0 +1,95 @@
+---
+title: "Persistence Length"
+date: 2018-04-22T10:52:54-04:00
+draft: false
+---
+
+<style>
+td { 
+  padding: 5px;
+  font-family: monospace;
+  font-size: 1.25rem;
+}
+th {
+  text-align: center;
+  padding: 0px 5px;
+}
+th.left_column {
+  text-align: right;
+}
+figure { 
+  margin: 0px 20px;
+  max-width: 50rem;
+}
+img[src*="#smaller"] {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+</style>
+
+In class we recently discussed the simplified elastic rod model for polymers, which assumes that polymers can be modeled as an *inextensible rod*, i.e. that the length of the rod doesn't change, and that the twist of the polymer is ignorable (possibly because the polymer is joined by single bonds). I want to give a short proof of the statement that the *tangent-tangent correlation function*, i.e. the autocorrelation of the polymer at some distance $$x$$, is exponentially decaying [^1].
+
+## Model setup
+
+We let the polymer be of length $$L$$, with $$s \in [0, L]$$ denoting the position of interest along the polymer. At each position $$s$$, we have a unit tangent vector $$\mathbf{t}(s)$$, as seen here:
+
+
+In the simplified elastic rod model, it's important to understand the forces at work: first, given a particular configuration of the polymer, there's an energy corresponding to it, from the potential energy of the bending of the polymer. We argue that this energy is quadratic in the amount of the bend. We can measure 'the amount of bend' as $$d\mathbf{t}(s)/ds$$, so we have essentially that:
+
+$$dE = \frac{1}{2}k_BT \left(A \left|\frac{\mathbf{t}(s)}{ds}\right|^2\right)$$
+
+here, $$A$$ is an introduced constant with units of length. Of course for any configuration $$\omega$$ we can integrate this to get the total potential energy $$E(\omega)$$.  
+
+Second, there's *entropy*, which comes from the temperature. For long ropes this is of course negligible, but for polymers a few nanometers wide in solution this is very significant. The model uses the standard method of applying the Boltzmann distribution - i.e. for each configuration $$\omega$$ with potential energy $$E(\omega)$$ the probability of being found in that configuration is:
+
+$$p(\omega) \propto e^{-E(\omega)/k_BT}$$
+
+In fact, that's all we really need to set this up.
+
+## Argument
+
+The most important thing here is to draw a very clear picture. We're going to consider 3 positions $$A, B, C$$ along the polymer, in that order, and consider the tangent-tangent correlation between $$A$$ and $$C$$, which is $$\mathbf{t}(A) \cdot \mathbf{t}(C)$$. The key step here is to set up an axis where $$\mathbf{t}(B)$$ corresponds to the $$z$$-axis, and $$\mathbf{t}(A)$$ corresponds to the $$x$$-axis, (i.e. a spherical coordinate system):
+
+![](/correlation_1.png#smaller "The tangent vectors in a specific coordinate frame.")
+
+We let $$\theta_A, \theta_C$$ denote the angle between $$\mathbf{t}(B)$$ and and $$\mathbf{t}(A), \mathbf{t}(C)$$ respectively, where in the image we've used $$A, C$$ as labels instead of $$\mathbf{t}(A),\mathbf{t}(C)$$. $$\phi_C$$ is the angle between $$\mathbf{t}(C)$$ and the $$x$$-axis. 
+
+Then, from the regular inner product in this coordinate system we can see that:
+
+$$\mathbf{t}(A) \cdot \mathbf{t}(C) = \underbrace{\cos \theta_A \cos \theta_C}_{z-\text{axis}} + \underbrace{\sin \theta_A \sin \theta_C \cos \phi_C}_{x-\text{axis}} + \underbrace{0}_{y-\text{axis}}$$
+
+We want to find the expected value of this quantity (which is a random variable in $$A, C$$, since we fix $$B$$) when the distribution is the Boltzmann distribution given above:
+
+$$\langle\mathbf{t}(A) \cdot \mathbf{t}(C)\rangle = \int_{0}^{2\pi} \int_0^\pi \int_0^{\pi} \left(\cos \theta_A \cos \theta_C + \sin \theta_A \sin \theta_C \cos \phi_C\right) e^{-E(\theta_A, \theta_C)/k_BT} d\theta_A d\theta_C d\phi_C$$
+
+The argument Nelson makes is that since the energy isn't dependent on $$\phi_C$$ (since the only thing that matters is the bend off $$\mathbf{t}(B)$$), we can factor the second term in the integral as:
+
+$$\int_{0}^{\pi} \int_0^\pi \sin \theta_A \sin \theta_C \cdot e^{-E(\theta_A, \theta_C)/k_BT} \left(\int_0^{2\pi} \cos \phi_C  d\phi_C\right) d\theta_A d\theta_C $$
+
+But the integral on the inside is 0, so that term vanishes. Next, Nelson notes that $$E(\theta_A, \theta_C)$$ can be decomposed as $$E(\theta_A) + E(\theta_B)$$. This comes from the form of the integral as an integration with respect to $$\operatorname{d}s$$. Essentially:
+
+$$\int_A^C dE = \int_A^B dE + \int_B^C dE$$ 
+
+So we can write:
+
+$$
+\begin{aligned}
+\langle\mathbf{t}(A) \cdot \mathbf{t}(C)\rangle &= \int_0^\pi \int_0^\pi \cos \theta_A \cos \theta_C e^{-E(\theta_A, \theta_C)/k_BT} d\theta_C d\theta_A \\
+&= \int_0^\pi \cos \theta_A e^{-E(\theta_A)/k_BT} d\theta_A \int_0^\pi \cos \theta_C e^{-E(\theta_A, \theta_C)/k_BT} d\theta_C \\
+&= \langle\mathbf{t}(A) \cdot \mathbf{t}(B)\rangle \cdot \langle\mathbf{t}(B) \cdot \mathbf{t}(C)\rangle
+\end{aligned}
+$$
+
+From here, it's just a matter of applying the [Cauchy function equation](https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation) (the correlation is bounded) to get that the correlation should be an exponential function. The computation of that scalar factor is well-handled both by Nelson and Physical Biology of the Cell, so I won't reproduce it here.
+
+## tldr
+The factorization of correlation comes implicitly from:
+1. the fact that in 3 dimensions we only care about the deviation from the central axis, with $$\cos(\theta_A + \theta_C) = \cos(\theta_A)\cos(\theta_C) + (\text{stuff that dies}\ldots)$$, and
+2. the energy splits because of independence of the chain, and that means the probability distribution factors.
+
+[^1]: I found two clear treatments: one in Nelson's Biophysics (9.1.3 Track 2), which has been on my shelf for 4 years but I still haven't read through the whole thing, and [some lecture notes from EPFL](http://lcvmwww.epfl.ch/teaching/modelling_dna/public_files/Lecture_NotesLp.pdf). The latter is more rigorous (and Josh, another student, presented it in class), but I found it kind of annoying that there wasn't a simpler proof. Nelson has a good perspective but doesn't include any drawings, so I've covered it here.
+
+**References**
+
+Nelson, P. (2008). Biological physics. New York: WH Freeman.

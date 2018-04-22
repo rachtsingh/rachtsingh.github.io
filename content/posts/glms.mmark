@@ -1,0 +1,9 @@
+---
+title: "Generalized Linear Models"
+date: 2018-01-21T11:43:02-05:00
+draft: true
+---
+
+**summary**: this post covers a few basic concepts in GLMs, and more usefully shows how to fit them using PyTorch's shiny new `distributions` library. Caveat: some of this code is not yet released on PyTorch master or in a release. So this is more of a preview of things to come.
+
+### Generalized linear models

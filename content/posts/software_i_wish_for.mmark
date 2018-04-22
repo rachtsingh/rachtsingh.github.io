@@ -1,0 +1,10 @@
+---
+title: "Software I wish for"
+date: 2018-01-11T18:46:20-08:00
+draft: true
+---
+
+Ignore this post if you come here looking for research ideas. However if you're a hacker and you have some spare time...
+
+1. It would be fantastic if [torchtext](http://github.com/pytorch/text) was better. Specifically, it would be great, if (1) it had a much more robust set of tests [3-4 hours], and (2) automatically took care of cacheing the preprocessing of expensive datasets for you [2-3 hours], and (3) parsed text fast [probably many hours]! With (2) this isn't much of a concern, but wouldn't it be beautiful if someone wrote C++/Rust code that parsed text files and loaded them into PyTorch objects using [ATen](https://github.com/zdevito/ATen)? I don't believe that torchtext is currently I/O bound. Given the state of the API, I somehow have a hard time believing that serious NLP researchers are using it (my lab doesn't).
+
