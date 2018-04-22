@@ -101,7 +101,7 @@ figure {
   max-width: 50rem;
 }
 img[src*="#smaller"] {
-  width: 50%;
+  width: 65%;
   margin: auto;
   margin-bottom: 15px;
 }
@@ -113,13 +113,13 @@ img[src*="#smaller"] {
 
 <p>We let the polymer be of length <span  class="math">\(L\)</span>, with <span  class="math">\(s \in [0, L]\)</span> denoting the position of interest along the polymer. At each position <span  class="math">\(s\)</span>, we have a unit tangent vector <span  class="math">\(\mathbf{t}(s)\)</span>, as seen here:</p>
 
-<p>In the simplified elastic rod model, it's important to understand the forces at work: first, given a particular configuration of the polymer, there's an energy corresponding to it, from the potential energy of the bending of the polymer. We argue that this energy is quadratic in the amount of the bend. We can measure 'the amount of bend' as <span  class="math">\(d\mathbf{t}(s)/ds\)</span>, so we have essentially that:</p>
+<p>In the simplified elastic rod model, it's important to understand the forces at work: first, given a particular configuration of the polymer, there's an energy corresponding to it, from the potential energy of the bending of the polymer. We argue that this energy is quadratic in the amount of the bend since locally it's stiff, and stiff rods essentially follow Hooke's law. We can measure 'the amount of bend' as <span  class="math">\(d\mathbf{t}(s)/ds\)</span>, so in this model we have:</p>
 
-<p><span  class="math">\[dE = \frac{1}{2}k_BT \left(A \left|\frac{\mathbf{t}(s)}{ds}\right|^2\right)\]</span></p>
+<p><span  class="math">\[dE = \frac{1}{2}k_BT \left(A \left|\frac{d\mathbf{t}(s)}{ds}\right|^2\right) ds\]</span></p>
 
-<p>here, <span  class="math">\(A\)</span> is an introduced constant with units of length. Of course for any configuration <span  class="math">\(\omega\)</span> we can integrate this to get the total potential energy <span  class="math">\(E(\omega)\)</span>.</p>
+<p>here, <span  class="math">\(A\)</span> is an introduced constant with units of length. For any configuration <span  class="math">\(\omega\)</span> of the polymer we can integrate this to get the total potential energy <span  class="math">\(E(\omega)\)</span>.</p>
 
-<p>Second, there's <em>entropy</em>, which comes from the temperature. For long ropes this is of course negligible, but for polymers a few nanometers wide in solution this is very significant. The model uses the standard method of applying the Boltzmann distribution - i.e. for each configuration <span  class="math">\(\omega\)</span> with potential energy <span  class="math">\(E(\omega)\)</span> the probability of being found in that configuration is:</p>
+<p>Second, there's <em>entropy</em>, which comes from the temperature. For long ropes this is negligible, but for polymers a few nanometers wide in solution this is very significant. The model uses the standard method of applying the Boltzmann distribution - i.e. for each configuration <span  class="math">\(\omega\)</span> with potential energy <span  class="math">\(E(\omega)\)</span> the probability of being found in that configuration is:</p>
 
 <p><span  class="math">\[p(\omega) \propto e^{-E(\omega)/k_BT}\]</span></p>
 
@@ -129,15 +129,15 @@ img[src*="#smaller"] {
 
 <p>The most important thing here is to draw a very clear picture. We're going to consider 3 positions <span  class="math">\(A, B, C\)</span> along the polymer, in that order, and consider the tangent-tangent correlation between <span  class="math">\(A\)</span> and <span  class="math">\(C\)</span>, which is <span  class="math">\(\mathbf{t}(A) \cdot \mathbf{t}(C)\)</span>. The key step here is to set up an axis where <span  class="math">\(\mathbf{t}(B)\)</span> corresponds to the <span  class="math">\(z\)</span>-axis, and <span  class="math">\(\mathbf{t}(A)\)</span> corresponds to the <span  class="math">\(x\)</span>-axis, (i.e. a spherical coordinate system):</p>
 
-<p><figure><img src="/correlation_1.png#smaller" alt="" title="The tangent vectors in a specific coordinate frame."><figcaption>The tangent vectors in a specific coordinate frame.</figcaption></figure></p>
+<p><figure><img src="/correlation_1.png#smaller" alt="" title="The tangent vectors in a specific coordinate frame. We use A, B, C as labels instead of t(A), t(B), t(C)."><figcaption>The tangent vectors in a specific coordinate frame. We use A, B, C as labels instead of t(A), t(B), t(C).</figcaption></figure></p>
 
-<p>We let <span  class="math">\(\theta_A, \theta_C\)</span> denote the angle between <span  class="math">\(\mathbf{t}(B)\)</span> and and <span  class="math">\(\mathbf{t}(A), \mathbf{t}(C)\)</span> respectively, where in the image we've used <span  class="math">\(A, C\)</span> as labels instead of <span  class="math">\(\mathbf{t}(A),\mathbf{t}(C)\)</span>. <span  class="math">\(\phi_C\)</span> is the angle between <span  class="math">\(\mathbf{t}(C)\)</span> and the <span  class="math">\(x\)</span>-axis.</p>
+<p>We let <span  class="math">\(\theta_A, \theta_C\)</span> denote the angle between <span  class="math">\(\mathbf{t}(B)\)</span> and and <span  class="math">\(\mathbf{t}(A), \mathbf{t}(C)\)</span> respectively. <span  class="math">\(\phi_C\)</span> is the angle between <span  class="math">\(\mathbf{t}(C)\)</span> and the <span  class="math">\(x\)</span>-axis.</p>
 
 <p>Then, from the regular inner product in this coordinate system we can see that:</p>
 
 <p><span  class="math">\[\mathbf{t}(A) \cdot \mathbf{t}(C) = \underbrace{\cos \theta_A \cos \theta_C}_{z-\text{axis}} + \underbrace{\sin \theta_A \sin \theta_C \cos \phi_C}_{x-\text{axis}} + \underbrace{0}_{y-\text{axis}}\]</span></p>
 
-<p>We want to find the expected value of this quantity (which is a random variable in <span  class="math">\(A, C\)</span>, since we fix <span  class="math">\(B\)</span>) when the distribution is the Boltzmann distribution given above:</p>
+<p>We want to find the expected value of this quantity (which is a random variable in <span  class="math">\(A, C\)</span>, since we fix <span  class="math">\(B\)</span>) under the Boltzmann distribution:</p>
 
 <p><span  class="math">\[\langle\mathbf{t}(A) \cdot \mathbf{t}(C)\rangle = \int_{0}^{2\pi} \int_0^\pi \int_0^{\pi} \left(\cos \theta_A \cos \theta_C + \sin \theta_A \sin \theta_C \cos \phi_C\right) e^{-E(\theta_A, \theta_C)/k_BT} d\theta_A d\theta_C d\phi_C\]</span></p>
 
@@ -145,7 +145,7 @@ img[src*="#smaller"] {
 
 <p><span  class="math">\[\int_{0}^{\pi} \int_0^\pi \sin \theta_A \sin \theta_C \cdot e^{-E(\theta_A, \theta_C)/k_BT} \left(\int_0^{2\pi} \cos \phi_C  d\phi_C\right) d\theta_A d\theta_C \]</span></p>
 
-<p>But the integral on the inside is 0, so that term vanishes. Next, Nelson notes that <span  class="math">\(E(\theta_A, \theta_C)\)</span> can be decomposed as <span  class="math">\(E(\theta_A) + E(\theta_B)\)</span>. This comes from the form of the integral as an integration with respect to <span  class="math">\(\operatorname{d}s\)</span>. Essentially:</p>
+<p>But the integral on the inside is 0, so that term vanishes. Next, we should note that <span  class="math">\(E(\theta_A, \theta_C)\)</span> can be decomposed as <span  class="math">\(E(\theta_A) + E(\theta_B)\)</span>. This comes from the form of the integral as an integration with respect to <span  class="math">\(\operatorname{d}s\)</span>. Essentially:</p>
 
 <p><span  class="math">\[\int_A^C dE = \int_A^B dE + \int_B^C dE\]</span></p>
 
@@ -159,7 +159,7 @@ img[src*="#smaller"] {
 \end{aligned}
 \]</span></p>
 
-<p>From here, it's just a matter of applying the <a href="https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation">Cauchy function equation</a> (the correlation is bounded) to get that the correlation should be an exponential function. The computation of that scalar factor is well-handled both by Nelson and Physical Biology of the Cell, so I won't reproduce it here.</p>
+<p>From here, it's we can apply the <a href="https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation">Cauchy function equation</a> (the correlation is bounded) to get that the correlation should be exponentially decaying. The computation of that scalar factor is well-handled both by Nelson and Physical Biology of the Cell, so I won't reproduce it here.</p>
 
 <h2 id="tldr">tldr</h2>
 
