@@ -6,10 +6,22 @@
     <description>Recent content on Rachit Singh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Apr 2018 10:52:54 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 22 Apr 2018 18:57:21 -0400</lastBuildDate>
     
 	<atom:link href="https://rachitsingh.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Langevin Equation</title>
+      <link>https://rachitsingh.com/the-langevin-equation/</link>
+      <pubDate>Sun, 22 Apr 2018 18:57:21 -0400</pubDate>
+      
+      <guid>https://rachitsingh.com/the-langevin-equation/</guid>
+      <description>This post covers the Langevin equation, a stochastic differential equation that models the dynamics of particles in Brownian motion 1. This covers the ideas used in this reference due to Lennart Sjögren.
+Langevin Equation In 1907 Einstein published a paper that derived a macroscopic quantity \(D\), the diffusion constant, with microscopic quantities:
+\[D = \frac{k_BT}{6\pi\eta a}\]
+where \(\eta\) is the viscosity of the liquid and \(a\) is the radius of the particle.</description>
+    </item>
     
     <item>
       <title>Persistence Length</title>
