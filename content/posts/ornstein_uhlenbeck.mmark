@@ -28,7 +28,7 @@ y_t &= \int_0^t f(y(t)) dt + \sigma B_t
 \end{aligned}
 $$
 
-This is a regular integral because $$\sigma$$ doesn't depend on time, but the end result is a stochastic process (i.e. a collection of random variables indexed here by time). We can of course generalize this as much as we'd like, including letting $$\sigma$$ be a function of $$y$$ or $$t$$, which would necessitate a stochastic integral, but luckily we don't need to.
+This is a regular integral because $$\sigma$$ doesn't depend on time, but the end result is a stochastic process (i.e. a collection of random variables indexed here by time). We can of course generalize this as much as we'd like, including letting $$\sigma$$ be a function of $$y$$ or $$t$$, which would necessitate a stochastic integral, but luckily we don't need to just yet (that'll come later). 
 
 In our case, we can write the Langevin equation as:
 
@@ -40,9 +40,9 @@ $$
 \end{aligned}
 $$
 
-In application, we can note the following facts: $$\overline{\xi(t)} = 0$$, and $$\langle\xi(t_1)\xi(t_2)\rangle = g\delta(t_1 - t_2)$$. The first statement says that the force has 0 mean. The second says that it is totally uncorrelated with variance $$g$$ at any given point. This assumption is realistic because the particles considered are being hit by other particles many billions of times a second. Finally, we can make the (fairly strong) assumption that the force applied at each time comes from a Gaussian distribution with the moments implied by the previous facts[^2]. 
+In application, we can note the following facts: $$\mathbb{E}[\xi(t)] = 0$$, and $$\mathbb{E}[\xi(t_1)\xi(t_2)] = g\delta(t_1 - t_2)$$. The first statement says that the force has 0 mean. The second says that it is totally uncorrelated with some variance $$g$$ at any given point. This assumption is realistic because the particles considered are being hit by other particles many billions of times a second. Finally, we can make the (fairly strong) assumption that the force applied at each time comes from a Gaussian distribution with the moments implied by the previous facts[^2]. 
 
-Then, $$\xi(t)$$ satisfies the definition of a *Gaussian white noise*. Then we can confidently approach its integral as a Wiener process (or Brownian motion process). We can also get this from [Donsker's theorem](https://en.wikipedia.org/wiki/Donsker%27s_theorem) I think, though I'm not sure about the details. Letting $$U_t = \int_0^t \xi_t dt$$, we finally have the SDE for an Ornstein-Uhlenbeck process[^3]:
+Then, $$\xi(t)$$ satisfies the definition of a *Gaussian white noise*. Then we can confidently approach its integral as a Wiener process (or Brownian motion process). We can also get this from [Donsker's theorem](https://en.wikipedia.org/wiki/Donsker%27s_theorem) I think, though I'm not sure about the details. Letting $$U_t = \int_0^t \xi_s ds$$, we finally have the SDE for an Ornstein-Uhlenbeck process[^3]:
 
 $$dv_t = -\frac{\gamma}{m} v_t dt + \frac{1}{m}dU_t$$
 
