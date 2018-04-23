@@ -129,13 +129,13 @@ img[src*="#smaller"] {
 
 <p><figure><img src="/correlation_1.png#smaller" alt="" title="The tangent vectors in a specific coordinate frame. We use A, B, C as labels instead of t(A), t(B), t(C)."><figcaption>The tangent vectors in a specific coordinate frame. We use A, B, C as labels instead of t(A), t(B), t(C).</figcaption></figure></p>
 
-<p>We let <span  class="math">\(\theta_A, \theta_C\)</span> denote the angle between <span  class="math">\(\mathbf{t}(B)\)</span> and and <span  class="math">\(\mathbf{t}(A), \mathbf{t}(C)\)</span> respectively. <span  class="math">\(\phi_C\)</span> is the angle between <span  class="math">\(\mathbf{t}(C)\)</span> and the <span  class="math">\(x\)</span>-axis.</p>
+<p>We let <span  class="math">\(\theta_A, \theta_C\)</span> denote the angle between <span  class="math">\(\mathbf{t}(B)\)</span> and <span  class="math">\(\mathbf{t}(A), \mathbf{t}(C)\)</span> respectively. <span  class="math">\(\phi_C\)</span> is the angle between <span  class="math">\(\mathbf{t}(C)\)</span> and the <span  class="math">\(x\)</span>-axis.</p>
 
 <p>Then, from the regular inner product in this coordinate system we can see that:</p>
 
 <p><span  class="math">\[\mathbf{t}(A) \cdot \mathbf{t}(C) = \underbrace{\cos \theta_A \cos \theta_C}_{z-\text{axis}} + \underbrace{\sin \theta_A \sin \theta_C \cos \phi_C}_{x-\text{axis}} + \underbrace{0}_{y-\text{axis}}\]</span></p>
 
-<p>We want to find the expected value of this quantity (which is a random variable in <span  class="math">\(A, C\)</span>, since we fix <span  class="math">\(B\)</span>) under the Boltzmann distribution:</p>
+<p>We want to find the expected value of this quantity (which is a random variable in <span  class="math">\(A, C\)</span>, since we fix <span  class="math">\(B\)</span> under the Boltzmann distribution:</p>
 
 <p><span  class="math">\[\langle\mathbf{t}(A) \cdot \mathbf{t}(C)\rangle = \int_{0}^{2\pi} \int_0^\pi \int_0^{\pi} \left(\cos \theta_A \cos \theta_C + \sin \theta_A \sin \theta_C \cos \phi_C\right) e^{-E(\theta_A, \theta_C)/k_BT} d\theta_A d\theta_C d\phi_C\]</span></p>
 
