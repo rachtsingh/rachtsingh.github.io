@@ -32,10 +32,7 @@ In class we recently discussed the simplified elastic rod model for polymers, wh
 
 ## Model setup
 
-We let the polymer be of length $$L$$, with $$s \in [0, L]$$ denoting the position of interest along the polymer. At each position $$s$$, we have a unit tangent vector $$\mathbf{t}(s)$$, as seen here:
-
-
-In the simplified elastic rod model, it's important to understand the forces at work: first, given a particular configuration of the polymer, there's an energy corresponding to it, from the potential energy of the bending of the polymer. We argue that this energy is quadratic in the amount of the bend since locally it's stiff, and stiff rods essentially follow Hooke's law. We can measure 'the amount of bend' as $$d\mathbf{t}(s)/ds$$, so in this model we have:
+We let the polymer be of length $$L$$, with $$s \in [0, L]$$ denoting the position of interest along the polymer. At each position $$s$$, we have a unit tangent vector $$\mathbf{t}(s)$$. In the simplified elastic rod model, it's important to understand the forces at work: first, given a particular configuration of the polymer, there's an energy corresponding to it, from the potential energy of the bending of the polymer. We argue that this energy is quadratic in the amount of the bend since locally it's stiff, and stiff rods essentially follow Hooke's law. We can measure 'the amount of bend' as $$d\mathbf{t}(s)/ds$$, so in this model we have:
 
 $$dE = \frac{1}{2}k_BT \left(A \left|\frac{d\mathbf{t}(s)}{ds}\right|^2\right) ds$$
 

@@ -1,0 +1,115 @@
+---
+title: "The Langevin Equation"
+date: 2018-04-22T18:57:21-04:00
+draft: false
+---
+
+This post covers the [Langevin equation](https://en.wikipedia.org/wiki/Langevin_equation), a stochastic differential equation that models the dynamics of particles in Brownian motion [^1]. This covers the ideas used in [this reference](http://physics.gu.se/~frtbm/joomla/media/mydocs/LennartSjogren/kap6.pdf) due to Lennart Sjögren.
+
+## Langevin Equation
+In 1907 Einstein published a paper that derived a *macroscopic quantity* $$D$$, the diffusion constant, with *microscopic quantities*:
+
+$$D = \frac{k_BT}{6\pi\eta a}$$
+
+where $$\eta$$ is the viscosity of the liquid and $$a$$ is the radius of the particle. In 1908 Langevin [derived the same result](https://www.physik.uni-augsburg.de/theo1/hanggi/History/Langevin1908.pdf) using Stoke's law to note that the drag on a particle is $$\gamma = 6\pi \eta a$$, so that we can write the equations of motion as:
+
+$$m\frac{d^2x}{dt^2} = -\gamma \frac{dx}{dt} + \xi$$
+
+for some noisy force $$\xi$$. The argument, which is given in the linked paper, relies on the fact that we can multiply by $$x$$, and take the average over all the particles. This gives us a term $$\overline{\xi x}$$, which Langevin claimed is 0. This 'averaging' lets him work in variance-space, which leads to a result about the second moment of the group of particles: $$\overline{x^2} - \overline{x_0^2} = 2Dt$$, using Einstein's $$D$$, which is the the same as the definition of $$D$$. The averaging procedure is a bit sketchy, and [some people](https://arxiv.org/pdf/physics/0502141.pdf) have noted the handwave. Our goal is to put this on a surer footing.  
+
+## Stochastic Differential Equations
+
+An ordinary differential equation might look like $$y'(t) = f(y(t))$$, or $$dy(t) = f(y(t)) dt$$ in differential form. If we want to model a process with *noise*, we might add a Brownian motion increment $$\sigma dB_t$$ to get:
+
+$$
+\begin{aligned}
+dy_t &= f(y(t))dt + \sigma dB_t \\
+y_t &= \int_0^t f(y(t)) dt + \sigma B_t
+\end{aligned}
+$$
+
+This is a regular integral because $$\sigma$$ doesn't depend on time, but the end result is a stochastic process (i.e. a collection of random variables indexed here by time). We can of course generalize this as much as we'd like, including letting $$\sigma$$ be a function of $$y$$ or $$t$$, which would necessitate a stochastic integral, but luckily we don't need to.
+
+In our case, we can write the Langevin equation as:
+
+$$
+\begin{aligned}
+\frac{dx_t}{dt} &= v_t \\
+\frac{dv_t}{dt} &= -\frac{\gamma}{m}v_t + \frac{1}{m}\xi_t \\
+\implies dv_t &= -\frac{\gamma}{m}v_t dt + \frac{1}{m}\xi_t dt
+\end{aligned}
+$$
+
+In application, we can note the following facts: $$\overline{\xi(t)} = 0$$, and $$\langle\xi(t_1)\xi(t_2)\rangle = g\delta(t_1 - t_2)$$. The first statement says that the force has 0 mean. The second says that it is totally uncorrelated with variance $$g$$ at any given point. This assumption is realistic because the particles considered are being hit by other particles many billions of times a second. Finally, we can make the (fairly strong) assumption that the force applied at each time comes from a Gaussian distribution with the moments implied by the previous facts[^2]. 
+
+Then, $$\xi(t)$$ satisfies the definition of a *Gaussian white noise*. Then we can confidently approach its integral as a Wiener process (or Brownian motion process). We can also get this from [Donsker's theorem](https://en.wikipedia.org/wiki/Donsker%27s_theorem) I think, though I'm not sure about the details. Letting $$U_t = \int_0^t \xi_t dt$$, we finally have the SDE for an Ornstein-Uhlenbeck process[^3]:
+
+$$dv_t = -\frac{\gamma}{m} v_t dt + \frac{1}{m}dU_t$$
+
+which we can integrate by applying [Ito's formula](https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma) in the following way:
+
+$$
+\begin{aligned}
+de^{\gamma t/m}v_t &= \left(\frac{\gamma}{m}e^{\gamma t/m}v_t dt + e^{\gamma t/m}dv_t\right) \\
+&= \frac{1}{m}e^{\gamma t/m} dU_t \\
+\implies e^{\gamma t/m}v_t &= v_0 + \frac{1}{m}\int_0^t e^{\gamma s/m} dU_s \\
+v_t &= v_0e^{-\gamma t/m} + \frac{1}{m}\int_0^t e^{-\gamma (t - s)/m} dU_s \\
+\end{aligned}
+$$
+
+This is in some sense the 'solution' to the Langevin equation, but our goal is to rederive the results in the Langevin paper almost *de novo*. Clearly from this result the expectation is just $$v_0e^{-\gamma t/m}$$ (which decays to 0), since $$U_s$$ the Wiener process has mean 0. However, for the second moment (from which we can compute the variance) we need to apply [Ito's isometry](https://en.wikipedia.org/wiki/It%C3%B4_isometry): 
+
+$$
+\begin{aligned}
+\mathbb{E}[v_t^2] &= e^{-\gamma 2t/m}v_0^2 + g\mathbb{E}\left[\left(\frac{1}{m}\int_0^t e^{-(t - s)\gamma/m} dU_s\right)^2\right] \\
+&= e^{-2\gamma t/m}v_0^2 + \frac{g}{m^2}\mathbb{E}\left[\int_0^t e^{-2(t - s)\gamma/m} ds\right] \\
+&= e^{-2\gamma t/m}v_0^2 + \frac{g}{2\gamma m}\left[e^{-2(t - s)\gamma/m}\right]_0^t \\ 
+&= e^{-2\gamma t/m}v_0^2 + \frac{g}{2\gamma m}\left(1 - e^{-2\gamma t/m}\right) \\ 
+\end{aligned}$$
+
+Now, as $$t \to \infty$$, we'd expect $$\mathbb{E}[v_t^2] = k_BT/m$$ (from equipartition), and the limit of the above result is $$g/2\gamma m$$, so we can conclude that:
+
+$$g = 2\gamma k_B T$$
+
+Finally, we can use this to derive the dynamics of the particle itself (as a stochastic process, of course):
+
+$$
+\begin{aligned}
+x_t &= \int_0^t v_s ds \\
+&= \int_0^t \left(v_0e^{-\gamma s/m} + \frac{1}{m}\int_0^s e^{-\gamma (s - u)/m} dU_u\right) ds \\
+&= x_0 + \frac{\gamma}{m}v_0\left[1 - e^{-\gamma t/m}\right] + \frac{1}{m} \int_0^t \left(\int_u^t e^{-\gamma(s - u) / m} ds\right) dU_u \\
+&= x_0 + \frac{\gamma}{m}v_0\left[1 - e^{-\gamma t/m}\right] + \frac{1}{\gamma} \int_0^t \left[1 - e^{-\gamma(t - u)/m}\right] dU_u
+\end{aligned}
+$$
+
+and again apply Ito's isometry to get the second moment (here, I drop the leading terms which go to 0 as $$t \to \infty$$):
+
+$$
+\begin{aligned}
+\mathbb{E}[(x_t - x_0)^2] &= \left(\text{terms that go to 0} \ldots \right) + \frac{1}{\gamma^2}\mathbb{E}\left[\left(\int_0^t \left[1 - e^{-(t - u)\gamma/m}\right] dU_u\right)^2\right] \\
+&= \frac{g}{\gamma^2} \int_0^t\left[1 - e^{-\gamma(t - s)/m}\right]^2 ds \\
+&= \left(\text{terms that go to 0} \ldots \right) + \frac{g}{\gamma^2}\left[t - \frac{m}{\gamma}\left(1 - e^{-t\gamma/m}\right)\right] \\
+\end{aligned}
+$$
+
+So, in the long run, the variance grows as $$\mathbb{E}[(x_t - x_0)^2] = \frac{2k_BT}{\gamma} t$$. Comparing this to the diffusion equation which says that this should grow as $$2Dt$$, we get that
+
+$$D = \frac{k_BT}{\gamma}$$
+
+which is Einstein's result.
+
+**References**
+
+Le Gall, Jean-François. Brownian motion, martingales, and stochastic calculus. Vol. 274. Heidelberg: Springer, 2016.
+
+Sjögren, Lennart. Stochastic Processes lecture notes ch. 6: *Brownian Motion: Langevin Equation*. Retrieved from [here](http://physics.gu.se/~frtbm/joomla/media/mydocs/LennartSjogren/kap6.pdf)
+
+Next: The [Feynman-Kac Formula](https://en.wikipedia.org/wiki/Feynman%E2%80%93Kac_formula) which definitely has applications in statistics.
+
+[^1]: This is pretty related to *stochastic gradient Langevin dynamics* ([see here](https://www.ics.uci.edu/~welling/publications/papers/stoclangevin_v6.pdf)) I think. I don't think I know that paper well enough or the surrounding background in (Neal, 2010) to comment intelligently yet, but something I hope to get to soon. My understanding is that Langevin dynamics are essentially the above system, but with a driving force (maybe the gradient of the loss?).
+
+[^2]: One attempt to justify that the distribution of $$\xi(t)$$ at each time must be Gaussian is the following: we let $$dt$$ be large enough that hundreds of collisions still happen. No matter the distribution that that comes from, since the variables are i.i.d. we can apply the regular central limit theorem (CLT) to show that the overall force converges in distribution to a Gaussian. 
+
+<!-- Another attempt we can make is to note that we sort of know the distribution of particles that arrive to impart a momentum: a particle with velocity $$v$$ comes with probability $$\propto \exp(-mv^2/2k_BT)$$ (which is a Gaussian distribution in $$v$$). Since the total momentum divided by $$dt$$ is the force applied (and the momentum is a constant times $$v$$ because of reflection angles, etc.), the distribution of the force $$\xi(t)$$ is also Gaussian. -->
+
+[^3]: Actually, Ornstein [developed](http://216.92.172.113/courses/phys39/simulations/Uhlenbeck%20Brownian%20Motion%20Phys%20Rev%201930.pdf) these methods in order to formalize Langevin's arguments. I've linked a review paper from 1930, but the first version was published in 1917, I think. 
