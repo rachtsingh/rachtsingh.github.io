@@ -108,7 +108,7 @@ y_t &= \int_0^t f(y(t)) dt + \sigma B_t
 \end{aligned}
 \]</span></p>
 
-<p>This is a regular integral because <span  class="math">\(\sigma\)</span> doesn't depend on time, but the end result is a stochastic process (i.e. a collection of random variables indexed here by time). We can of course generalize this as much as we'd like, including letting <span  class="math">\(\sigma\)</span> be a function of <span  class="math">\(y\)</span> or <span  class="math">\(t\)</span>, which would necessitate a stochastic integral, but luckily we don't need to.</p>
+<p>This is a regular integral because <span  class="math">\(\sigma\)</span> doesn't depend on time, but the end result is a stochastic process (i.e. a collection of random variables indexed here by time). We can of course generalize this as much as we'd like, including letting <span  class="math">\(\sigma\)</span> be a function of <span  class="math">\(y\)</span> or <span  class="math">\(t\)</span>, which would necessitate a stochastic integral, but luckily we don't need to just yet (that'll come later).</p>
 
 <p>In our case, we can write the Langevin equation as:</p>
 
@@ -120,9 +120,9 @@ y_t &= \int_0^t f(y(t)) dt + \sigma B_t
 \end{aligned}
 \]</span></p>
 
-<p>In application, we can note the following facts: <span  class="math">\(\overline{\xi(t)} = 0\)</span>, and <span  class="math">\(\langle\xi(t_1)\xi(t_2)\rangle = g\delta(t_1 - t_2)\)</span>. The first statement says that the force has 0 mean. The second says that it is totally uncorrelated with variance <span  class="math">\(g\)</span> at any given point. This assumption is realistic because the particles considered are being hit by other particles many billions of times a second. Finally, we can make the (fairly strong) assumption that the force applied at each time comes from a Gaussian distribution with the moments implied by the previous facts<sup class="footnote-ref" id="fnref:2"><a class="footnote" href="#fn:2">2</a></sup>.</p>
+<p>In application, we can note the following facts: <span  class="math">\(\mathbb{E}[\xi(t)] = 0\)</span>, and <span  class="math">\(\mathbb{E}[\xi(t_1)\xi(t_2)] = g\delta(t_1 - t_2)\)</span>. The first statement says that the force has 0 mean. The second says that it is totally uncorrelated with some variance <span  class="math">\(g\)</span> at any given point. This assumption is realistic because the particles considered are being hit by other particles many billions of times a second. Finally, we can make the (fairly strong) assumption that the force applied at each time comes from a Gaussian distribution with the moments implied by the previous facts<sup class="footnote-ref" id="fnref:2"><a class="footnote" href="#fn:2">2</a></sup>.</p>
 
-<p>Then, <span  class="math">\(\xi(t)\)</span> satisfies the definition of a <em>Gaussian white noise</em>. Then we can confidently approach its integral as a Wiener process (or Brownian motion process). We can also get this from <a href="https://en.wikipedia.org/wiki/Donsker%27s_theorem">Donsker's theorem</a> I think, though I'm not sure about the details. Letting <span  class="math">\(U_t = \int_0^t \xi_t dt\)</span>, we finally have the SDE for an Ornstein-Uhlenbeck process<sup class="footnote-ref" id="fnref:3"><a class="footnote" href="#fn:3">3</a></sup>:</p>
+<p>Then, <span  class="math">\(\xi(t)\)</span> satisfies the definition of a <em>Gaussian white noise</em>. Then we can confidently approach its integral as a Wiener process (or Brownian motion process). We can also get this from <a href="https://en.wikipedia.org/wiki/Donsker%27s_theorem">Donsker's theorem</a> I think, though I'm not sure about the details. Letting <span  class="math">\(U_t = \int_0^t \xi_s ds\)</span>, we finally have the SDE for an Ornstein-Uhlenbeck process<sup class="footnote-ref" id="fnref:3"><a class="footnote" href="#fn:3">3</a></sup>:</p>
 
 <p><span  class="math">\[dv_t = -\frac{\gamma}{m} v_t dt + \frac{1}{m}dU_t\]</span></p>
 
