@@ -88,7 +88,8 @@ LaTeX  A tikz-cd graphical editor that I wish I&amp;rsquo;d during 55&amp;hellip
       <pubDate>Fri, 08 Dec 2017 15:41:37 -0800</pubDate>
       
       <guid>https://rachitsingh.com/ideas/</guid>
-      <description>Ideas for libraries (so that people can use this stuff quickly) - Implement a discrete Poisson distribution using RELAX/REBAR and/or the TRE. - Reimplement the CUDA code for unbiased MCMC so that it&amp;rsquo;s PyTorch based, if that&amp;rsquo;s possible. That way we can let people define arbitrary likelihoods and still get coupled kernels. Maybe use CuPy as a glue language, though if the PyTorch story for external modules gets better then this shouldn&amp;rsquo;t be an issue.</description>
+      <description>Ideas for libraries (so that people can use this stuff quickly)
+ Implement a discrete Poisson distribution using RELAX/REBAR and/or the TRE. Reimplement the CUDA code for unbiased MCMC so that it&amp;rsquo;s PyTorch based, if that&amp;rsquo;s possible. That way we can let people define arbitrary likelihoods and still get coupled kernels. Maybe use CuPy as a glue language, though if the PyTorch story for external modules gets better then this shouldn&amp;rsquo;t be an issue.</description>
     </item>
     
     <item>

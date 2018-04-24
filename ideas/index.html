@@ -83,16 +83,31 @@ window.onload = ready;
 
 <div class="content">
 	<h1>Ideas <aside><a href="/" class="w3-tag">home</a>&nbsp;&nbsp;&nbsp;</aside></h1>
-	<p>Ideas for libraries (so that people can use this stuff quickly)
-- Implement a discrete Poisson distribution using RELAX/REBAR and/or the TRE.
-- Reimplement the CUDA code for unbiased MCMC so that it&rsquo;s PyTorch based, if that&rsquo;s possible. That way we can let
-people define arbitrary likelihoods and still get coupled kernels. Maybe use <a href="https://cupy.chainer.org/">CuPy</a> as a glue language, though if the PyTorch story for external modules gets better then this shouldn&rsquo;t be an issue.</p>
+	<p>Ideas for libraries (so that people can use this stuff quickly)</p>
 
-<p>Ideas for the blog:
-- Use a serverless framework (AWS Lambda or Google Cloud Functions I guess) to implement comments on the blog, with KaTeX and Markdown support.
-  - Factor this out into a separate library that anyone can use
-- Rewrite my Math 221 final paper and add that section on algebraic statistics, and post it
-- Write about High &amp; Low</p>
+<ul>
+<li>Implement a discrete Poisson distribution using RELAX/REBAR and/or the TRE.</li>
+<li>Reimplement the CUDA code for unbiased MCMC so that it&rsquo;s PyTorch based, if that&rsquo;s possible. That way we can let
+people define arbitrary likelihoods and still get coupled kernels. Maybe use <a href="https://cupy.chainer.org/">CuPy</a> as a glue language, though if the PyTorch story for external modules gets better then this shouldn&rsquo;t be an issue.</li>
+</ul>
+
+<p>Ideas for the blog:</p>
+
+<ul>
+<li>Use a serverless framework (AWS Lambda or Google Cloud Functions I guess) to implement comments on the blog, with KaTeX and Markdown support.
+
+<ul>
+<li>Factor this out into a separate library that anyone can use</li>
+</ul></li>
+<li>Make it fast again:
+
+<ul>
+<li><a href="https://developers.google.com/speed/pagespeed/insights/?url=www.rachitsingh.com">https://developers.google.com/speed/pagespeed/insights/?url=www.rachitsingh.com</a></li>
+<li>Server-side render KaTeX, so there&rsquo;s no more need for JavaScript</li>
+</ul></li>
+<li>Rewrite my Math 221 final paper and add that section on algebraic statistics, and post it</li>
+<li>Write about High &amp; Low</li>
+</ul>
 
 </div>
 
