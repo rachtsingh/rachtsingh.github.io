@@ -119,6 +119,64 @@ div.highlight {
     font-size: 1.2rem;
 }
 
+label {
+    font-weight: bold;
+}
+
+input, textarea {
+    display: block;
+    margin: 10px;
+    margin-left: 0px;
+    font-size: 1rem;
+}
+
+input {
+    font-family: Lora, Georgia, serif;
+}
+
+textarea {
+    min-width: 500px;
+    min-height: 100px;
+    font-family: system-ui;
+}
+
+form {
+    margin-bottom: 1em;
+    padding-top: 15px;
+}
+
+/* for comments */
+
+.comments {
+}
+
+.comments ul {
+    padding: 20px;
+    list-style: none;
+    background-color: #eeee;
+    margin: 0 0;
+}
+
+.comments h4 {
+    margin: 0;
+}
+
+.comments li {margin: 15px 0px 15px 0px;padding-bottom: 15px;border-bottom: solid 1px #ccc;}
+
+.comments p {
+    margin: 0;
+}
+
+.comments li:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.comments li:first-child {
+    margin-top: 0;
+}
+
 @media screen and (min-width: 30em) and (max-width: 60em) {
     h1 {
         font-size: 2.25rem;

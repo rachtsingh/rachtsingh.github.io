@@ -169,22 +169,48 @@ This is a fairly well publicized piece of work, so I probably don't need to say 
 <footer>
 
 	<p><small><em>Written January 9, 2018. </em>
-		 
-		Send feedback to <a  href="mailto:rachitsingh@college.harvard.edu">the author</a>.
+		
+		
 		
 	</small></p>
 
-	<p>
+
+
+
+<h3> Comments </h3>
+<div class="comments">
+
+
+<i> No comments yet.</i>
+
+
+
+<form action="https://us-central1-cloud-ide-testing.cloudfunctions.net/submitMSG" id="comment_form">
+    <div class="row">
+        <label for="name">Name</label>
+        <input type="text" name="author"/>
+    </div>
+    <div class="row">
+        <label for="msg">Comment</label> 
+        <textarea name="msg"></textarea>
+    </div>
+    <input type="hidden" name="url" value="a-few-favorite-papers-of-2017" />
+    <button type="submit">Add Comment</button>
+</form>
+</div>
+
+
+</body>
+<script type="text/javascript">
+renderMathInElement(document.body);
+</script>
+</html>
+
+
+    <hr>
+	
+    <p>
 	<a href="/pytorch-internals-curand-and-numerical-instability/">← PyTorch Internals, cuRAND, and numerical instability</a>&nbsp;
 	<a href="/persistence-length/" style="float:right;">Persistence Length →</a>
 	</p>
-
-
 </footer>
-
-
-
-
-<script>renderMathInElement(document.body);</script>
-</body>
-</html>

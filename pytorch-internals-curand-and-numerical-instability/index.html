@@ -107,7 +107,8 @@ window.onload = ready;
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">THFloatTensor * <span style="color:#0a0">add</span>(THFloatTensor *a, THFloatTensor *b);
 THDoubleTensor * <span style="color:#0a0">add</span>(THDoubleTensor *a, THDoubleTensor *b);
 THCFloatTensor * <span style="color:#0a0">add</span>(THCFloatTensor *a, THCFloatTensor *b);
-...</code></pre></div>
+...
+</code></pre></div>
 <p>probably have the same implementation. Imagine repeating that 15 times! So not only are the FFI interfaces generated, but the function signatures and implementations too.</p>
 
 <p>Very recently, <a href="https://github.com/zdevito/ATen">ATen</a> has made the story somewhat simpler by leveraging C++11 and namespacing to eliminate macros <sup class="footnote-ref" id="fnref:2"><a class="footnote" href="#fn:2">2</a></sup>.</p>
@@ -147,7 +148,8 @@ THCFloatTensor * <span style="color:#0a0">add</span>(THCFloatTensor *a, THCFloat
     }
   }
   ... <span style="color:#aaa;font-style:italic">// more special case code for values of lambda
-</span><span style="color:#aaa;font-style:italic"></span>}</code></pre></div>
+</span><span style="color:#aaa;font-style:italic"></span>}
+</code></pre></div>
 <p>In particular, if a thread didn't exit in the first or second samples, it would never exit the while loop. I spent a while debugging, and realized that even though calls to <code>curand_uniform_double</code> were uniformly distributed in isolation, adding rejection sampling would cause it to repeat values. The calls are <code>curand_uniform_double(state)</code> for some RNG state <code>state</code>, but <code>state</code> was fine since it generated uniform doubles in isolation. PyTorch uses a MTGP32-based sampler, so I eventually looked in the docs and found this line:</p>
 
 <blockquote>
@@ -180,7 +182,8 @@ function.&quot;</p>
       idx = atomicAdd(&amp;thread_count, <span style="color:#099">1</span>); <span style="color:#aaa;font-style:italic">// counts &#39;living&#39; threads
 </span><span style="color:#aaa;font-style:italic"></span>    }
   }
-}</code></pre></div>
+}
+</code></pre></div>
 <p>While it's neat, for a few reasons unfortunately it's not quite appropriate for PyTorch, so we'll look into other solutions. For the Poisson, at least, there's a <code>curand_poisson</code> which implements it natively for us.</p>
 
 <h2 id="some-thoughts">Some thoughts</h2>
@@ -218,22 +221,48 @@ function.&quot;</p>
 <footer>
 
 	<p><small><em>Written January 3, 2018. </em>
-		 
-		Send feedback to <a  href="mailto:rachitsingh@college.harvard.edu">the author</a>.
+		
+		
 		
 	</small></p>
 
-	<p>
+
+
+
+<h3> Comments </h3>
+<div class="comments">
+
+
+<i> No comments yet.</i>
+
+
+
+<form action="https://us-central1-cloud-ide-testing.cloudfunctions.net/submitMSG" id="comment_form">
+    <div class="row">
+        <label for="name">Name</label>
+        <input type="text" name="author"/>
+    </div>
+    <div class="row">
+        <label for="msg">Comment</label> 
+        <textarea name="msg"></textarea>
+    </div>
+    <input type="hidden" name="url" value="pytorch-internals-curand-and-numerical-instability" />
+    <button type="submit">Add Comment</button>
+</form>
+</div>
+
+
+</body>
+<script type="text/javascript">
+renderMathInElement(document.body);
+</script>
+</html>
+
+
+    <hr>
+	
+    <p>
 	<a href="/elbo_surgery/">← ELBO Surgery</a>&nbsp;
 	<a href="/a-few-favorite-papers-of-2017/" style="float:right;">A few favorite papers of 2017 →</a>
 	</p>
-
-
 </footer>
-
-
-
-
-<script>renderMathInElement(document.body);</script>
-</body>
-</html>
